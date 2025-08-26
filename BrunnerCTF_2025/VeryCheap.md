@@ -27,6 +27,8 @@ Before we do that, we check the activities noted by Autopsy, specifically we can
 
 To finish up our Autopsy use, we can also look into the recently used files tab of Autopsy as it has a long list of activities recorded. Most importantly, it shows clear sign of VeraCrypt usage due to other drive letters (X and Z) being used as locations. While we cannot see the contents of the files, we note that some of them appear to be decoy files, likely our target is trying hide something in a hidden volume while filling the first volume with the decoys. This will be important to keep in mind as we proceed. 
 
+![Recent Documents](recentdocuments.png "Autopsy - Recent Documents")
+
 ## Extracting artifacts - FTK Imager
 
 ### The test container
