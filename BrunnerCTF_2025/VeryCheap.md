@@ -7,7 +7,7 @@ Writeup by KristianLibo (0-Day Aarhus)
 > 
 > A recent police raid seized one of their office PCs. Your task: perform a full forensic analysis of the disk and find what VeryCheap is really hiding!
 > 
-> Difficulty: Hard, Author: Nissen
+> Difficulty: Hard, Author: Nissen, Category: Forensics
 
 This forensics task revolves around a disk dump. For seasoned forensics players, the title might bring similarity to VeraCrypt, a well-known program for encrypting disk volumes inside files. As we later reveal, this is a correct assumption but not needed as the usage of VeraCrypt was very visible.
 
@@ -67,7 +67,7 @@ So, this is the decoy volume we considered earlier. Yet, what is the password fo
 
 ### Chasing notes and a hidden volume
 
-We should go look at what is in Sticky Notes after the previous note. Sticky Notes are stored in a database located at "C:\Users\Joe\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState". In there we find plum.sqlite, the database we are looking for, as well as two other files database-related files - plum.sqlite-shm and plum.sqlite-wal. The database can be opened using DB browser for SQLite but in this scenario we should remember to place both the Write-Ahead Log (WAL file) and the SHM file in the same folder when opening as not all operations have been applied to the main database when those files are non-empty. We could miss important operations on the database if we do not take them along.
+We should go look at what is in Sticky Notes after the previous note. Sticky Notes are stored in a database located at "C:\Users\Joe\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState". In there we find plum.sqlite, the database we are looking for, as well as two other database-related files - plum.sqlite-shm and plum.sqlite-wal. The database can be opened using DB browser for SQLite but in this scenario we should remember to place both the Write-Ahead Log (WAL file) and the SHM file in the same folder when opening as not all operations have been applied to the main database when those files are non-empty. We could miss important operations on the database if we do not take them along.
  
 > Remember: NEVER save anything sensitive as a file on disk, just keep it in an unsaved Notepad window.
 > No worries, can be closed, Notepad remembers it when reopening.
